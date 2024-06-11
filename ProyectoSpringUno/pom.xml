@@ -16,6 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
-        <exec.mainClass>ProyectoSpringUno</exec.mainClass>
+        <exec.mainClass>es.pildoras.IoC.UsoEmpleados</exec.mainClass>
     </properties>
 </project>
