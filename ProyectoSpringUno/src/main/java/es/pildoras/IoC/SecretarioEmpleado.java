@@ -8,6 +8,9 @@ package es.pildoras.IoC;
 public class SecretarioEmpleado implements Empleados {
 
     
+    //Creación de campo tipo  creacion de informes (interfaz)
+    private CreacionInformes informeNuevo;
+    
     @Override
     public String getTareas() {
         
@@ -16,7 +19,13 @@ public class SecretarioEmpleado implements Empleados {
 
     @Override
     public String getInforme() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "Informe generado por el secretario " + informeNuevo.getInforme(); 
     }
+
+    public void setInformeNuevo(CreacionInformes informeNuevo) {
+        this.informeNuevo = informeNuevo;
+    }
+    
+    
     
 }
