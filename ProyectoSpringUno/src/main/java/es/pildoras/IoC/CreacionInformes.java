@@ -8,9 +8,7 @@ package es.pildoras.IoC;
  *
  * @author julio
  */
-public interface Empleados {
-    
-    public String getTareas();
+public interface CreacionInformes {
     
     public String getInforme();
     

@@ -36,6 +36,10 @@ public class UsoEmpleados {
         
         System.out.println(Juan.getTareas());
         
+        System.out.println(Juan.getInforme());
+        
+        
+        
         System.out.println("");
         System.out.println("");
         
