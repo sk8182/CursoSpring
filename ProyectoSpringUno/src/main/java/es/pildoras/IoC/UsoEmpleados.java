@@ -30,8 +30,9 @@ public class UsoEmpleados {
         //utilizo el contexto
        // Empleados Juan = (Empleados) contexto.getBean("miEmpleado", Empleados.class);
         
-        Empleados Maria = (Empleados) contexto.getBean("miSecretarioEmpleado", Empleados.class);
+        //SecretarioEmpleado Maria = (SecretarioEmpleado) contexto.getBean("miSecretarioEmpleado", SecretarioEmpleado.class);
         
+        JefeEmpleado Maria = (JefeEmpleado) contexto.getBean("miJefeEmpleado", JefeEmpleado.class);
         
         System.out.println("");
         System.out.println("");
@@ -40,6 +41,10 @@ public class UsoEmpleados {
         System.out.println(Maria.getTareas());
         
         System.out.println(Maria.getInforme());
+        
+        System.out.println("Email: "+Maria.getEmail());
+        
+        System.out.println(Maria.getNombreEmpresa());
         
         
         
