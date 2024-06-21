@@ -32,7 +32,7 @@ public class UsoEmpleados {
         
         //SecretarioEmpleado Maria = (SecretarioEmpleado) contexto.getBean("miSecretarioEmpleado", SecretarioEmpleado.class);
         
-        JefeEmpleado Maria = (JefeEmpleado) contexto.getBean("miJefeEmpleado", JefeEmpleado.class);
+        DirectorEmpleado Maria = (DirectorEmpleado) contexto.getBean("miEmpleado", DirectorEmpleado.class);
         
         System.out.println("");
         System.out.println("");
