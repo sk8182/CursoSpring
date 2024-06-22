@@ -26,7 +26,7 @@ public class UsoAnnotations {
         
         //pedir un Bean al contenedor
         
-        Empleados Antonio = contexto.getBean("ComercialExperimentado", Empleados.class);
+        Empleados Antonio = contexto.getBean("comercialExperimentado", Empleados.class);
         
         
         //usar el Bean

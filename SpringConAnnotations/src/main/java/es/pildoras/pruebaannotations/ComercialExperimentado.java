@@ -4,6 +4,7 @@
  */
 package es.pildoras.pruebaannotations;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -12,8 +13,20 @@ import org.springframework.stereotype.Component;
  * @author julio
  */
 
-@Component("ComercialExperimentado")
+
+
+@Component
 public class ComercialExperimentado implements Empleados {
+    
+    
+    private CreacionInformeFinanciero nuevoInforme;
+
+    @Autowired
+    public ComercialExperimentado(CreacionInformeFinanciero nuevoInforme) {
+        this.nuevoInforme = nuevoInforme;
+    }
+    
+    
 
     @Override
     public String getTareas() {
@@ -22,7 +35,10 @@ public class ComercialExperimentado implements Empleados {
 
     @Override
     public String getInforme() {
-       return "Informe generado por el comercial"; 
+       //return "Informe generado por el comercial"; 
+       return nuevoInforme.getInformeFinanciero();
     }
+    
+    
     
 }
