@@ -1,6 +1,6 @@
 <%-- 
-    Document   : paginaEjemplo
-    Created on : 29 jun 2024, 23:24:35
+    Document   : HolaAlumnosFormulario
+    Created on : 30 jun 2024, 0:23:36
     Author     : julio
 --%>
 
@@ -12,8 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Primer Ejemplo de MVC con Spring</h1>
-        
-        <a href="muestraFormulario">ir al formulario</a>
+        <form action="procesarFormulario" method="get">
+            
+            <input type="text" name="nombreAlumno">
+            
+            <input type="submit">
+            
+        </form>
     </body>
 </html>
