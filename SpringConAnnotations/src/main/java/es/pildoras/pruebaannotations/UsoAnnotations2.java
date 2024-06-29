@@ -35,23 +35,29 @@ public class UsoAnnotations2 {
         
         //pedir un Bean al contenedor
         
-        Empleados Antonio = contexto.getBean("comercialExperimentado", Empleados.class);
+        Empleados empleado = contexto.getBean("directorFinanciero", Empleados.class);
         
-        Empleados Lucia = contexto.getBean("comercialExperimentado", Empleados.class);
+        System.out.println(empleado.getTareas());
+        System.out.println(empleado.getInforme());
         
         
-        //apuntan al mismo objeto en memoria???????????
-        if(Antonio==Lucia){
-         
-            System.out.println("Apuntan al mismo lugar en memoria");//si no toco nada apunta al mismo objeto (SINGLETON)
-            System.out.println(Antonio +"\n"+ Lucia);
-        
-        }else{
-            
-            System.out.println("NO apuntan al mismo lugar en memoria");//defino Scope prototype en la clase comercialExperimentado
-            System.out.println(Antonio +"\n"+ Lucia);
-        }
-        
+//        Empleados Antonio = contexto.getBean("comercialExperimentado", Empleados.class);
+//        
+//        Empleados Lucia = contexto.getBean("comercialExperimentado", Empleados.class);
+//        
+//        
+//        //apuntan al mismo objeto en memoria???????????
+//        if(Antonio==Lucia){
+//         
+//            System.out.println("Apuntan al mismo lugar en memoria");//si no toco nada apunta al mismo objeto (SINGLETON)
+//            System.out.println(Antonio +"\n"+ Lucia);
+//        
+//        }else{
+//            
+//            System.out.println("NO apuntan al mismo lugar en memoria");//defino Scope prototype en la clase comercialExperimentado
+//            System.out.println(Antonio +"\n"+ Lucia);
+//        }
+//        
         //cerrar el contexto
         
         contexto.close();
