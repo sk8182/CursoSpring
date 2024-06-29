@@ -5,6 +5,7 @@
 package es.pildoras.pruebaannotations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
@@ -22,6 +23,8 @@ public class ComercialExperimentado implements Empleados {
     //****************podemos crear diferentes inyecciones desde Autowired (constructor, setter o campo de clase privado o no)*******************
     
     @Autowired
+   //Bean id que debe utilizar
+    @Qualifier("informeFinancieroTrim2")//---------------------Con qualifyer le decimos que clase empezando en minusculas************************************
     private CreacionInformeFinanciero nuevoInforme;
 
     /*@Autowired
