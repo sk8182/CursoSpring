@@ -19,12 +19,22 @@ import org.springframework.stereotype.Component;
 public class ComercialExperimentado implements Empleados {
     
     
+    //****************podemos crear diferentes inyecciones desde Autowired (constructor, setter o campo de clase privado o no)*******************
+    
+    @Autowired
     private CreacionInformeFinanciero nuevoInforme;
 
-    @Autowired
+    /*@Autowired
     public ComercialExperimentado(CreacionInformeFinanciero nuevoInforme) {
         this.nuevoInforme = nuevoInforme;
-    }
+    }*/
+
+    /*@Autowired
+    public void setNuevoInforme(CreacionInformeFinanciero nuevoInforme) {
+        this.nuevoInforme = nuevoInforme;
+    }*/
+    
+    
     
     
 
