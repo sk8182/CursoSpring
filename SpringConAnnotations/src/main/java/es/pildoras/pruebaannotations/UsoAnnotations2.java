@@ -35,10 +35,17 @@ public class UsoAnnotations2 {
         
         //pedir un Bean al contenedor
         
-        Empleados empleado = contexto.getBean("directorFinanciero", Empleados.class);
+        /*Empleados empleado = contexto.getBean("directorFinanciero", Empleados.class);
         
         System.out.println(empleado.getTareas());
-        System.out.println(empleado.getInforme());
+        System.out.println(empleado.getInforme());*/
+       
+        DirectorFinanciero empleado = contexto.getBean("directorFinanciero",DirectorFinanciero.class);
+        
+        System.out.println("Emaildel director: "+empleado.getEmail());
+        System.out.println("Nombre empresa: "+empleado.getNombreEmpresa());
+        
+        
         
         
 //        Empleados Antonio = contexto.getBean("comercialExperimentado", Empleados.class);

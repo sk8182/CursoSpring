@@ -5,6 +5,7 @@ package es.pildoras.pruebaannotations;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  *
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration //esto dice que nuestra clase será el archivo de configuración
 @ComponentScan("es.pildoras.pruebaannotations")//le decimos la ruta
+@PropertySource("classpath:datosEmpresa.propiedades")
 public class EmpleadosConfig {
     
     //Definir el bean para InformeFinancieroDtoCompras
