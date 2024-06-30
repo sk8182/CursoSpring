@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="procesarFormulario" method="get">
+        <form action="procesarFormulario2" method="get">
             
             <input type="text" name="nombreAlumno">
             

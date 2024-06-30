@@ -12,8 +12,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
-        Hola ${param.nombreAlumno}. Bienbenido al curso de Spring
-        
-    </body>
+
+        Hola ${param.nombreAlumno}. Bienvenido al curso de Spring
+
+        <p><br><!-- comment -->
+
+        <h2>Atención a todos</h2>
+
+        ${mensajeClaro}
+
+
+    </p>
+</body>
 </html>
