@@ -22,6 +22,10 @@
 		<property name="prefix" value="/WEB-INF/vista/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+        
+        
+        <!-- Configuración para recursos estáticos -->
+        <mvc:resources mapping="/recursos/**" location="/recursos/"/>
 
 </beans>
 

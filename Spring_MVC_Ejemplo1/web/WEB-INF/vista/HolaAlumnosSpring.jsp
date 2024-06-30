@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/recursos/estilos/miestilo.css">
     </head>
     <body>
 
@@ -23,5 +24,11 @@
 
 
     </p>
+    
+    <img alt="foto" src="${pageContext.request.contextPath}/recursos/imgs/sandman.jpg">
+    
+    
+    
+    
 </body>
 </html>
