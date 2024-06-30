@@ -4,7 +4,6 @@
  */
 package es.pildoras.spring.mvc;
 
-//import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,20 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author julio
  */
 @Controller
-@RequestMapping("/principal")
-public class HolaAlumnosControlador {
+@RequestMapping("/secundario")
+public class TirarControlador {
     
     @RequestMapping("/muestraFormulario")
     public String muestraFormulario(){//este metodo proporciona el formulario
         
         return "HolaAlumnosFormulario";
-        
-    }
-    
-    @RequestMapping("/procesarFormulario")
-    public String procesarFormulario(){
-        
-        return "HolaAlumnosSpring";
         
     }
     
@@ -39,9 +31,9 @@ public class HolaAlumnosControlador {
         
     public String otroProcesoFormulario(@RequestParam("nombreAlumno") String nombre, Model modelo){        
             
-        nombre+=" es el mejor alumno";
+        nombre+=" es el peor alumno";
         
-        String mensajeFinal= "¿Quien es el mejor alumno? "+ nombre;
+        String mensajeFinal= "¿Quien es el peor alumno? "+ nombre;
         
         //agregando info al modelo
         
