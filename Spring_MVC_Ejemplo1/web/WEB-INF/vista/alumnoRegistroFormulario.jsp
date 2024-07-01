@@ -21,11 +21,24 @@
             
             Nombre: <form:input path="nombre"/><%-- los path a de ser el nombre del atributo (cuando enviamos se hace uso de setters)--%>
             
-            <br><br><br>
+            <br/><br/><br/>
             
             Apellido: <form:input path="apellido"/>
             
-            <br><br><br>
+            <br/><br/><br/>
+            
+            Asignaturas Optativas:<br/>
+            
+            <form:select path="optativa" multiple="true">
+                
+                <form:option value="Diseño" label="Diseño"/>
+                <form:option value="Karate" label="Karate"/>
+                <form:option value="Comercio" label="Comercio"/>
+                <form:option value="Danza" label="Danza"/>
+                
+            </form:select>    
+            
+            <br/><br/><br/>
             
             <input type="submit" value="Enviar">
             
