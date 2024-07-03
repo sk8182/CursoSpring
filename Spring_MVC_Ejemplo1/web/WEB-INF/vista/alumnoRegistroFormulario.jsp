@@ -20,6 +20,8 @@
             
             
             Nombre: <form:input path="nombre"/><%-- los path a de ser el nombre del atributo (cuando enviamos se hace uso de setters)--%>
+            <br/>
+            <form:errors path="nombre" style="color:red"/>
             
             <br/><br/><br/>
             

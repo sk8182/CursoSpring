@@ -1,5 +1,5 @@
 #
-#Tue Jul 02 12:59:17 CEST 2024
+#Wed Jul 03 10:32:22 CEST 2024
 es.pildoras.spring.mvc.AlumnoController=org.springframework.stereotype.Component
 es.pildoras.spring.mvc.Controlador=org.springframework.stereotype.Component
 es.pildoras.spring.mvc.HolaAlumnosControlador=org.springframework.stereotype.Component
