@@ -28,12 +28,13 @@ public class GuardaClientePrueba {
         // Construir el SessionFactory a partir de la Configuration
         SessionFactory miFactory = configuration.buildSessionFactory();
         
+        
         // Abrir una sesión
         Session miSession= miFactory.openSession();
         
         try {
             
-            Clientes cliente1= new Clientes("Juan","Diaz","Gran Via");
+            Clientes cliente1= new Clientes("Josefa","Ramona","Plaza Sol");
             
             miSession.beginTransaction();
             
@@ -43,6 +44,20 @@ public class GuardaClientePrueba {
             
             System.out.println("Registro insertado correctamente en BBDD");
             
+            
+            //Lectura de registro
+            
+            miSession.beginTransaction();
+            
+            System.out.println("Lectura del registro con ID: " + cliente1.getId());
+            
+            Clientes clienteInsertado = miSession.get(Clientes.class, cliente1.getId());
+            
+            System.out.println("Registro: " + clienteInsertado);
+            
+            miSession.getTransaction().commit();
+            
+            System.out.println("Finalizado!");
            
             
         } finally {
