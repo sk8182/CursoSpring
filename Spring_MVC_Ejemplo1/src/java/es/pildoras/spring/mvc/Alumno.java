@@ -1,6 +1,7 @@
 
 package es.pildoras.spring.mvc;
 
+import es.pildoras.spring.mvc.validacionespersonalizadas.CPostalMadrid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -26,9 +27,12 @@ public class Alumno {
     private String optativa;
     private String ciudadEstudios;
     private String idiomasAlumno;
+    
     @Email
     private String email;
-    @Pattern(regexp="[0-9]{5}",message="Solo 5 valores numéricos") //introducimos regex en la propiedad
+    
+    //@Pattern(regexp="[0-9]{5}",message="Solo 5 valores numéricos") //introducimos regex en la propiedad
+    @CPostalMadrid
     private String codigoPostal;
 
     public String getNombre() {
