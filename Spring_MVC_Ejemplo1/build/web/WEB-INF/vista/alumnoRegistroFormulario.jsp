@@ -20,12 +20,21 @@
             
             
             Nombre: <form:input path="nombre"/><%-- los path a de ser el nombre del atributo (cuando enviamos se hace uso de setters)--%>
-            <br/>
             <form:errors path="nombre" style="color:red"/>
             
             <br/><br/><br/>
             
             Apellido: <form:input path="apellido"/>
+            
+            <br/><br/><br/>
+             
+            Edad: <form:input path="edad"/>
+            <form:errors path="edad" style="color:red"/>
+            
+            <br/><br/><br/>
+            
+            Email: <form:input path="email"/>
+            <form:errors path="email" style="color:red"/>
             
             <br/><br/><br/>
             
