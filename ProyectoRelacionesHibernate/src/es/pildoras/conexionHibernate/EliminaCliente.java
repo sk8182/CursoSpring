@@ -12,7 +12,7 @@ import org.hibernate.cfg.Configuration;
  *
  * @author julio
  */
-public class InsertaCliente {
+public class EliminaCliente {
 
     /**
      * @param args the command line arguments
@@ -31,21 +31,23 @@ public class InsertaCliente {
 
         try {
 
-            Cliente cliente1 = new Cliente("Paco", "Gomez", "Princesa");
-
-            DetallesCliente detallesCliente1 = new DetallesCliente("www.pildorasinformaticas.es", "7891234", "Segundo Cliente");
-
-            //asociar los objetos
-            cliente1.setDetallesCliente(detallesCliente1);
-
+           
             miSession.beginTransaction();
-
-            //esto guarda la info en las dos tablas relacionadas
-            miSession.save(cliente1);
+            
+            Cliente elCliente= miSession.get(Cliente.class, 3);
+            
+            if(elCliente!=null){
+                
+                System.out.println("Voy a eliminar al cliente "+ elCliente.getNombre());
+                
+                miSession.delete(elCliente);
+                
+            }
 
             miSession.getTransaction().commit();
 
-            System.out.println("Registro insertado correctamente en BBDD");
+            if(elCliente!=null) System.out.println("Registro eliminado correctamente en BBDD");
+            else System.out.println("No se encontro el cliente");
 
         } finally {
 
