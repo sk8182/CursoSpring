@@ -4,6 +4,7 @@
  */
 package es.pildoras.conexionHibernate;
 
+import java.lang.invoke.MethodHandles;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -32,22 +33,27 @@ public class ObtenerCliente {
         try {
 
             miSession.beginTransaction();
-            
+
             //Obtener DetallesCliente
-
             DetallesCliente DetallesDeCliente = miSession.get(DetallesCliente.class, 1);
-            
-            System.out.println(DetallesDeCliente);
-            
-            System.out.println(DetallesDeCliente.getElCliente());
 
+            System.out.println(DetallesDeCliente);
+
+            System.out.println(DetallesDeCliente.getElCliente());
             
+            System.out.println("Ahora eliminaremos en cascada");
+            
+            miSession.delete(DetallesDeCliente);
+
             miSession.getTransaction().commit();
 
-            
+        } catch (Exception ex1) { //es importante capturar las excepciones
+
+            ex1.printStackTrace();
 
         } finally {
 
+            //Para que no haya leaks es importante cerrar todos los recursos para que no haya LEAKS!!!!!!!!!!!!!!!!
             miSession.close();
 
             miFactory.close();
