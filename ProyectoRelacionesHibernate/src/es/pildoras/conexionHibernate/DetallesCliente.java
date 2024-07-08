@@ -24,6 +24,9 @@ public class DetallesCliente {
     private String tfno;
     @Column(name = "comentarios")
     private String comentarios;
+    
+    @OneToOne(mappedBy = "detallesCliente", cascade = CascadeType.ALL)//relación 1 a 1
+    private Cliente elCliente;
 
     public DetallesCliente() {
     }
@@ -66,6 +69,20 @@ public class DetallesCliente {
         this.comentarios = comentarios;
     }
 
+    public Cliente getElCliente() {
+        return elCliente;
+    }
+
+    public void setElCliente(Cliente elCliente) {
+        this.elCliente = elCliente;
+    }
+
+    @Override
+    public String toString() {
+        return "DetallesCliente{" + "id=" + id + ", web=" + web + ", tfno=" + tfno + ", comentarios=" + comentarios + '}';
+    }
+
+    
    
    
     
