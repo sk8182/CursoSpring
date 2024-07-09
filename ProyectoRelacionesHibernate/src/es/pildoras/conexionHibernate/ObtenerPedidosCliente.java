@@ -4,6 +4,8 @@
  */
 package es.pildoras.conexionHibernate;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -12,7 +14,7 @@ import org.hibernate.cfg.Configuration;
  *
  * @author julio
  */
-public class InsertaCliente {
+public class ObtenerPedidosCliente {
 
     /**
      * @param args the command line arguments
@@ -31,21 +33,22 @@ public class InsertaCliente {
 
         try {
 
-            Cliente cliente1 = new Cliente("Ana", "Marin", "Gran Via");
-
-            DetallesCliente detallesCliente1 = new DetallesCliente("www.pildorasinformaticas.es", "66751626", "Tercer Cliente");
-
-            //asociar los objetos
-            cliente1.setDetallesCliente(detallesCliente1);
-
             miSession.beginTransaction();
 
-            //esto guarda la info en las dos tablas relacionadas
-            miSession.save(cliente1);
+            //obtener el cliente de la tabla cliente de la BBDD
+            Cliente elCliente = miSession.get(Cliente.class, 5);
+            
+            System.out.println("Cliente: "+ elCliente);
+            System.out.println("Pedidos: "+ elCliente.getPedidos());
 
+            
             miSession.getTransaction().commit();
 
-            System.out.println("Registro insertado correctamente en BBDD");
+            
+            
+        }catch(Exception e){
+            
+            e.printStackTrace();
 
         } finally {
 

@@ -5,6 +5,7 @@
 package es.pildoras.conexionHibernate;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -35,12 +36,12 @@ public class CrearPedidosCliente {
             miSession.beginTransaction();
 
             //obtener el cliente de la tabla cliente de la BBDD
-            Cliente elCliente = miSession.get(Cliente.class, 5);
+            Cliente elCliente = miSession.get(Cliente.class, 6);
             
             //Crear Pedidos del Cliente
-            Pedido pedido1 = new Pedido(new Date(120,6,4));
-            Pedido pedido2 = new Pedido(new Date(120,5,3));
-            Pedido pedido3 = new Pedido(new Date(120,7,2));
+            Pedido pedido1 = new Pedido(new GregorianCalendar(2024,7,9));
+            Pedido pedido2 = new Pedido(new GregorianCalendar(2024,4,13));
+            Pedido pedido3 = new Pedido(new GregorianCalendar(2024,11,25));
             
             //Agregar pedidos creadis al Cliente creado
             elCliente.agregarPedidos(pedido1);

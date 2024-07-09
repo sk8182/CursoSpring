@@ -26,19 +26,19 @@ public class Cliente {
     private String apellido;
     @Column(name = "direccion")
     private String direccion;
-    
-    @OneToOne(cascade=CascadeType.ALL)//relación 1 a 1
-    @JoinColumn(name="id")
+
+    @OneToOne(cascade = CascadeType.ALL)//relación 1 a 1
+    @JoinColumn(name = "id")
     private DetallesCliente detallesCliente;
-    
-    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+
+    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Pedido> pedidos;
 
     public Cliente() {
     }
 
     public Cliente(String nombre, String apellido, String direccion) {
- 
+
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
@@ -83,29 +83,32 @@ public class Cliente {
     public void setDetallesCliente(DetallesCliente detallesCliente) {
         this.detallesCliente = detallesCliente;
     }
-    
-    public void agregarPedidos (Pedido elPedido){
-        
-        if(pedidos == null){
-            
+
+    public void agregarPedidos(Pedido elPedido) {
+
+        if (pedidos == null) {
+
             pedidos = new ArrayList<>();
-            
+
         }
-            
-            pedidos.add(elPedido);
-            
-            elPedido.setCliente(this);
-            
-        
-        
+
+        pedidos.add(elPedido);
+
+        elPedido.setCliente(this);
+
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     @Override
     public String toString() {
         return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion + '}';
     }
-
-   
-    
 
 }

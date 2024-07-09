@@ -5,6 +5,7 @@
 package es.pildoras.conexionHibernate;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ public class Pedido {
     private int id;
     
     @Column(name = "fecha")
-    private Date fecha;
+    private GregorianCalendar fecha;
     
     @Column(name = "forma_pago")
     private String formaPago;
@@ -39,9 +40,10 @@ public class Pedido {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private Cliente cliente;
 
-    
-    
-    public Pedido(Date fecha) {
+    public Pedido() {
+    }
+
+    public Pedido(GregorianCalendar fecha) {
         this.fecha = fecha;
     }
 
