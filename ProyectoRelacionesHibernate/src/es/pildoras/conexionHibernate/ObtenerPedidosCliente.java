@@ -6,6 +6,7 @@ package es.pildoras.conexionHibernate;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -36,15 +37,23 @@ public class ObtenerPedidosCliente {
             miSession.beginTransaction();
 
             //obtener el cliente de la tabla cliente de la BBDD
-            Cliente elCliente = miSession.get(Cliente.class, 5);
+            //Cliente elCliente = miSession.get(Cliente.class, 5);
+            
+
+            //*********************************************************
+            Query<Cliente> consulta = miSession.createQuery("SELECT cl FROM Cliente cl JOIN FETCH cl.pedidos WHERE cl.id=:elClienteId", Cliente.class);//para hacer que funcione el LAZY sin mover nada hacemos esto
+            
+            consulta.setParameter("elClienteId", 5 );
+            
+            Cliente elCliente = consulta.getSingleResult();
             
             System.out.println("Cliente: "+ elCliente);
-            System.out.println("Pedidos: "+ elCliente.getPedidos());
-
-            
+           //*********************************************************  
             miSession.getTransaction().commit();
 
+            miSession.close();
             
+            System.out.println("Pedidos: "+ elCliente.getPedidos());// de esta manera da error porque por LAZY no ha cargado los datos
             
         }catch(Exception e){
             
@@ -52,7 +61,7 @@ public class ObtenerPedidosCliente {
 
         } finally {
 
-            miSession.close();
+            
 
             miFactory.close();
 

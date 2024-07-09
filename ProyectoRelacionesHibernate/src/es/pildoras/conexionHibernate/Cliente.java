@@ -32,7 +32,8 @@ public class Cliente {
     @JoinColumn(name = "id")
     private DetallesCliente detallesCliente;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})// el Fetch marca como y cuantas llamadas va a hacer a la bbdd
+    //si el fetch es LAZY y cierro la session antes de tiempo (recuerda que con LAZY se van haciendo llamadas poco a poco para ir mostrando poco a poco la info) dará problemas. Con session me refiero al objeto SESSION
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})// el Fetch marca como y cuantas llamadas va a hacer a la bbdd
     private List<Pedido> pedidos;
 
     public Cliente() {
