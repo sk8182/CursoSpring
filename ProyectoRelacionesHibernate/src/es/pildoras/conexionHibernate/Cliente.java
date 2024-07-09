@@ -4,6 +4,7 @@
  */
 package es.pildoras.conexionHibernate;
 
+import com.mysql.cj.x.protobuf.MysqlxCursor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -31,7 +32,7 @@ public class Cliente {
     @JoinColumn(name = "id")
     private DetallesCliente detallesCliente;
 
-    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})// el Fetch marca como y cuantas llamadas va a hacer a la bbdd
     private List<Pedido> pedidos;
 
     public Cliente() {
