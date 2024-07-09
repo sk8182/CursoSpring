@@ -25,7 +25,7 @@ public class DetallesCliente {
     @Column(name = "comentarios")
     private String comentarios;
     
-    @OneToOne(mappedBy = "detallesCliente", cascade = CascadeType.ALL)//relación 1 a 1
+    @OneToOne(mappedBy = "detallesCliente")//relación 1 a 1
     private Cliente elCliente;
 
     public DetallesCliente() {

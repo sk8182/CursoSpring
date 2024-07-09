@@ -4,6 +4,8 @@
  */
 package es.pildoras.conexionHibernate;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -28,6 +30,9 @@ public class Cliente {
     @OneToOne(cascade=CascadeType.ALL)//relación 1 a 1
     @JoinColumn(name="id")
     private DetallesCliente detallesCliente;
+    
+    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    private List<Pedido> pedidos;
 
     public Cliente() {
     }
@@ -77,6 +82,22 @@ public class Cliente {
 
     public void setDetallesCliente(DetallesCliente detallesCliente) {
         this.detallesCliente = detallesCliente;
+    }
+    
+    public void agregarPedidos (Pedido elPedido){
+        
+        if(pedidos == null){
+            
+            pedidos = new ArrayList<>();
+            
+        }
+            
+            pedidos.add(elPedido);
+            
+            elPedido.setCliente(this);
+            
+        
+        
     }
 
     @Override
