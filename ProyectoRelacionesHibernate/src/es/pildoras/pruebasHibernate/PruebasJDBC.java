@@ -21,7 +21,7 @@ public class PruebasJDBC {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        String jdbcUrl="jdbc:mysql://localhost:3307/relacioneshibernate?useSSL=false";
+           String jdbcUrl="jdbc:mysql://localhost:3307/relacioneshibernate?useSSL=false";
            String usuario="root";
            String contra="";
         
