@@ -57,6 +57,22 @@ public class ClienteDAOclase implements ClienteDAO{
         miSession.save(elCliente);
         
     }
+
+    @Override
+    @Transactional
+    public Cliente getCliente(int id) {
+        
+        //Obtener la session
+        
+        Session miSession = sessionFactory.getCurrentSession();
+        
+        //Obtener la info del cliente seleccionado
+       
+        Cliente elCliente = miSession.get(Cliente.class, id);
+        
+        
+        return elCliente;
+    }
     
     
     
