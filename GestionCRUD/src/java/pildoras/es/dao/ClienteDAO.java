@@ -14,5 +14,7 @@ import pildoras.es.controlador.entity.Cliente;
 public interface ClienteDAO {
     
     public List<Cliente> getClientes();
+
+    public void insertarCliente(Cliente elCliente);
     
 }

@@ -7,5 +7,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Author     : julio
 */
 body{
-    background-color: red;
+    background-color: #bcf1b5;
+}
+
+h1{
+    text-align: center;
+}
+
+table{
+    
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    
 }

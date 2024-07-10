@@ -16,9 +16,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        Hemos llegado a la lista de futuros clientes!!!!
+        <h1>Lista de clientes</h1>
         
-        <table>
+        <table border="1">
             
             <tr>
                 
@@ -41,6 +41,10 @@
             </c:forEach>
             
         </table>
+        
+        <br/>
+        
+        <input type="button" value="Agregar Cliente" onclick="window.location.href='muestraFormularioAgregar';return false;"/>
         
     </body>
 </html>
