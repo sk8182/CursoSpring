@@ -54,7 +54,7 @@ public class ClienteDAOclase implements ClienteDAO{
         
         //Insertar el cliente
         
-        miSession.save(elCliente);
+        miSession.saveOrUpdate(elCliente);
         
     }
 
