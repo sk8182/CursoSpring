@@ -18,63 +18,68 @@ import pildoras.es.controlador.entity.Cliente;
  * @author julio
  */
 @Repository
-public class ClienteDAOclase implements ClienteDAO{
-    
+public class ClienteDAOclase implements ClienteDAO {
+
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
     @Transactional
     public List<Cliente> getClientes() {
-        
+
         //Obtener la session
-        
         Session miSession = sessionFactory.getCurrentSession();
-        
+
         //Crear la consulta (Query)
-        
         Query<Cliente> miQuery = miSession.createQuery("from Cliente", Cliente.class);
-        
+
         //Ejecutar la query y devolver resultados
-        
         List<Cliente> clientes = miQuery.getResultList();
-        
-        
+
         return clientes;
-     
+
     }
 
     @Override
     @Transactional
     public void insertarCliente(Cliente elCliente) {
-        
+
         //Obtener la session
-        
         Session miSession = sessionFactory.getCurrentSession();
-        
+
         //Insertar el cliente
-        
         miSession.saveOrUpdate(elCliente);
-        
+
     }
 
     @Override
     @Transactional
     public Cliente getCliente(int id) {
-        
+
         //Obtener la session
-        
         Session miSession = sessionFactory.getCurrentSession();
-        
+
         //Obtener la info del cliente seleccionado
-       
         Cliente elCliente = miSession.get(Cliente.class, id);
-        
-        
+
         return elCliente;
     }
-    
-    
-    
-    
+
+    @Override
+    @Transactional
+    public void eliminaCliente(int id) {
+
+        //Obtener la session
+        Session miSession = sessionFactory.getCurrentSession();
+        
+        //Borrar el cliente de la BBDD utilizando como criterio su ID
+        
+        Query consulta = miSession.createQuery("delete from Cliente where id=:IdDelCliente");
+        
+        consulta.setParameter("IdDelCliente", id);
+        
+        consulta.executeUpdate();
+
+    }
+
 }
