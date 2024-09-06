@@ -40,6 +40,16 @@ public class ClasePrincipal {
         
         elClienteVIP.insertaClienteVIP();
         
+        elCliente.setCodigoClienteNormal("564564545");
+        
+        elCliente.setValoracionClienteNormal("positiva");
+        
+        String codigoCl= elCliente.getCodigoClienteNormal();
+        
+        String valoraCl= elCliente.getValoracionClienteNormal();
+
+
+
         //Cerrar el contexto
         
         contexto.close();
