@@ -16,7 +16,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoginConAspecto {
     
-    @Before("execution(public void insertaCliente())")
+    //@Before("execution(public void es.pildoras.aop.dao.ClienteVIPDAO.insertaCliente())")//esto es un ejemplo de PointCut Expression
+    @Before("execution(public void insertaCliente*())")//esto es otro ejemplo de PointCut Expression
     public void antesInsertarCliente(){
         
         System.out.println("El usuario está logueado");

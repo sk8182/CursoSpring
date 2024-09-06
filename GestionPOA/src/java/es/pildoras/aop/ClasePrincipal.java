@@ -5,6 +5,8 @@
 package es.pildoras.aop;
 
 import es.pildoras.aop.dao.ClienteDAO;
+import es.pildoras.aop.dao.ClienteVIPDAO;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -27,9 +29,13 @@ public class ClasePrincipal {
         
         ClienteDAO elCliente = contexto.getBean("clienteDAO",ClienteDAO.class);
         
+        ClienteVIPDAO elClienteVIP = contexto.getBean("clienteVIPDAO",ClienteVIPDAO.class);
+        
         // LLamar al método
         
-        elCliente.insertaCliente();
+        elCliente.insertaCliente();// este es el nombre del metodo que debe coincidir con la anotacion @Before
+        
+        elClienteVIP.insertaClienteVIP();
         
         //Cerrar el contexto
         

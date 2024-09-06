@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
  *
  * @author julio
  */
-@Component("clienteDAO")
-public class ClienteDAO {
+@Component("clienteVIPDAO")
+public class ClienteVIPDAO {
 
     
-    public void insertaCliente() {
+    public void insertaClienteVIP() {
 
-        System.out.println("Trabajo realizado ok. Cliente insertado con éxito");
+        System.out.println("Trabajo realizado ok. Cliente VIP insertado con éxito");
     }
 
 }
