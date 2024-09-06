@@ -36,7 +36,11 @@ public class ClasePrincipal {
         
         Cliente cl1 = new Cliente();
         
-        elCliente.insertaCliente(cl1, "Normal");// este es el nombre del metodo que debe coincidir con la anotacion @Before
+        cl1.setNombre("Juan Díaz");
+        
+        cl1.setTipo("Normal");
+        
+        elCliente.insertaCliente(cl1 , cl1.getTipo());// este es el nombre del metodo que debe coincidir con la anotacion @Before
         
         elClienteVIP.insertaClienteVIP();
 

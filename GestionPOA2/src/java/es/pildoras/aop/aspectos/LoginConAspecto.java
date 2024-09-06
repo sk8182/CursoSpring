@@ -4,6 +4,8 @@
  */
 package es.pildoras.aop.aspectos;
 
+import es.pildoras.aop.dao.Cliente;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -25,16 +27,25 @@ public class LoginConAspecto {
 
     }
        
-    
-    
 
-    
     @Before("paraClientes()")//así para pasar todo
-    public void antesInsertarCliente() {
+    public void antesInsertarCliente(JoinPoint miJoin) {//punto de intercepcion (JoinPoint)
 
+        
         System.out.println("El usuario está logueado");
 
         System.out.println("El perfil para insertar clientes es correcto");
+        
+        Object[] argumentos = miJoin.getArgs();
+        
+        for(Object temp : argumentos){
+            if(temp instanceof Cliente){
+                Cliente elCliente = (Cliente)temp;
+                
+                System.out.println("Nombre del cliente: "+elCliente.getNombre());
+                System.out.println("Tipo de cliente: "+elCliente.getTipo());
+            }
+        }
 
     }
 
