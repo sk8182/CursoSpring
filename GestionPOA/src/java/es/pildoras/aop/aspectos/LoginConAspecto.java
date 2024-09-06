@@ -17,7 +17,9 @@ import org.springframework.stereotype.Component;
 public class LoginConAspecto {
     
     //@Before("execution(public void es.pildoras.aop.dao.ClienteVIPDAO.insertaCliente())")//esto es un ejemplo de PointCut Expression
-    @Before("execution(public void insertaCliente*())")//esto es otro ejemplo de PointCut Expression
+    //@Before("execution(public * insertaCliente*())")//esto es otro ejemplo de PointCut Expression, donde el asterisco nos filtra los tipos de datos que devuelve o no devuelve (String y void) y lo que viene despues del asterisco tb
+    //@Before("execution(public * insertaCliente*(es.pildoras.aop.dao.Cliente,..))")//así para pasar parametros
+    @Before("execution(public * insertaCliente*(..))")//así para pasar todo
     public void antesInsertarCliente(){
         
         System.out.println("El usuario está logueado");

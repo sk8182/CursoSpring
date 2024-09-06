@@ -4,6 +4,7 @@
  */
 package es.pildoras.aop;
 
+import es.pildoras.aop.dao.Cliente;
 import es.pildoras.aop.dao.ClienteDAO;
 import es.pildoras.aop.dao.ClienteVIPDAO;
 
@@ -33,7 +34,9 @@ public class ClasePrincipal {
         
         // LLamar al método
         
-        elCliente.insertaCliente();// este es el nombre del metodo que debe coincidir con la anotacion @Before
+        Cliente cl1 = new Cliente();
+        
+        elCliente.insertaCliente(cl1, "Normal");// este es el nombre del metodo que debe coincidir con la anotacion @Before
         
         elClienteVIP.insertaClienteVIP();
         

@@ -6,6 +6,8 @@ package es.pildoras.aop.dao;
 
 import org.springframework.stereotype.Component;
 
+import es.pildoras.aop.dao.Cliente;
+
 /**
  *
  * @author julio
@@ -14,9 +16,17 @@ import org.springframework.stereotype.Component;
 public class ClienteDAO {
 
     
-    public void insertaCliente() {
-
+//    public String insertaCliente() {
+//
+//        System.out.println("Trabajo realizado ok. Cliente insertado con éxito");
+//        
+//        return "Cliente insertado correctamente";
+//    }
+    
+    public void insertaCliente(Cliente elCliente, String tipo){
+        
         System.out.println("Trabajo realizado ok. Cliente insertado con éxito");
+        
     }
 
 }
