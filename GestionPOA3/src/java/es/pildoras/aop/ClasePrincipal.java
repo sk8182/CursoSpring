@@ -7,6 +7,7 @@ package es.pildoras.aop;
 import es.pildoras.aop.dao.Cliente;
 import es.pildoras.aop.dao.ClienteDAO;
 import es.pildoras.aop.dao.ClienteVIPDAO;
+import es.pildoras.aop.servicios.MedicionServicio;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -22,30 +23,39 @@ public class ClasePrincipal {
     public static void main(String[] args) {
 
         //Leer la conf de Spring
-        
         AnnotationConfigApplicationContext contexto = new AnnotationConfigApplicationContext(Configuracion.class);
-        
-        
+
         //Obtener el bean del contenedor de Spring
+        //ClienteDAO elCliente = contexto.getBean("clienteDAO", ClienteDAO.class);
+
+//        try {
+//            boolean miParam = false;
+//
+//            elCliente.encuentraClientes(miParam);
+//
+//        } catch (Exception miEx) {
+//            System.out.println("Excepción lanzada desde la clase principal");
+//            System.out.println(miEx.getMessage());
+//        }
+//
+//        System.out.println("Aquí continuaría la ejecución del programa");
+
         
-        ClienteDAO elCliente = contexto.getBean("clienteDAO",ClienteDAO.class);
+
+
+        //Obtener el bean del contenedor de Spring
+        MedicionServicio elServicio = contexto.getBean("medicionServicio", MedicionServicio.class);
         
-        try{
-        boolean miParam=false;
+        System.out.println("Llamando al método getServicio");
         
-        elCliente.encuentraClientes(miParam);
+        String datos=elServicio.getServicio();
         
-        }catch(Exception miEx){
-            System.out.println("Excepción lanzada desde la clase principal");
-            System.out.println(miEx.getMessage());
-        }
-        
-        System.out.println("Aquí continuaría la ejecución del programa");
+        System.out.println("Devolución del método: "+ datos);
+
 
         //Cerrar el contexto
-        
         contexto.close();
-        
+
     }
-    
+
 }

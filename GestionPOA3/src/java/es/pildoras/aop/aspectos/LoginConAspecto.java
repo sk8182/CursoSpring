@@ -7,9 +7,11 @@ package es.pildoras.aop.aspectos;
 import es.pildoras.aop.dao.Cliente;
 import java.util.List;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -24,6 +26,28 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(2)//Orden de ejecucion del aspecto!!!!!!!!!!!!
 public class LoginConAspecto {
+    
+    //anotación Around para ejecutarServicio
+    @Around("execution(* es.pildoras.aop.servicios.*.getServicio(..))")
+    public Object ejecutarServicio(ProceedingJoinPoint elPoint)throws Throwable{
+        
+        System.out.println("--------Comienzo de acciones antes de llamada----------");
+        
+        long comienzo = System.currentTimeMillis();
+        
+        Object resultado = elPoint.proceed();//elPoint apunta  al método destino
+        
+        System.out.println("--------------tareas después de llamada-----------------");
+        
+        long fin = System.currentTimeMillis();
+        
+        long duracion = fin-comienzo;
+        
+        System.out.println("El método tardó: "+ duracion/1000 + " segundos");
+        
+        return resultado;
+    }
+    
     
     
     //metodo que realiza tareas tanto si lanza excepcion como si no @After
