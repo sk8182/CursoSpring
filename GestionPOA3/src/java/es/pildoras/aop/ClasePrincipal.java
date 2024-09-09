@@ -30,7 +30,15 @@ public class ClasePrincipal {
         
         ClienteDAO elCliente = contexto.getBean("clienteDAO",ClienteDAO.class);
         
-        elCliente.encuentraClientes();
+        try{
+        boolean miParam=true;
+        
+        elCliente.encuentraClientes(miParam);
+        
+        }catch(Exception miEx){
+            System.out.println("Excepción lanzada desde la clase principal");
+            System.out.println(miEx.getMessage());
+        }
         
         System.out.println("Aquí continuaría la ejecución del programa");
 

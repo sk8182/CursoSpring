@@ -8,6 +8,7 @@ import es.pildoras.aop.dao.Cliente;
 import java.util.List;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -22,6 +23,16 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(2)//Orden de ejecucion del aspecto!!!!!!!!!!!!
 public class LoginConAspecto {
+    
+    
+    //metodo que procesa datos depues de la excepcion
+    
+    @AfterThrowing(pointcut = "execution(* es.pildoras.aop.dao.ClienteDAO.encuentraClientes(..))",throwing = "LaExcepcion")
+    public void procesandoDatosAfterExceptionEncuentraClientes(Throwable LaExcepcion){
+        
+        System.out.println("Aquí se están ejecutando de forma automatica las tareas tras excepción");
+        
+    }
     
     
     //despues de obtener la lista de clientes funciona este metodo
