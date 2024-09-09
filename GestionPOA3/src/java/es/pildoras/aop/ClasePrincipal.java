@@ -31,7 +31,7 @@ public class ClasePrincipal {
         ClienteDAO elCliente = contexto.getBean("clienteDAO",ClienteDAO.class);
         
         try{
-        boolean miParam=true;
+        boolean miParam=false;
         
         elCliente.encuentraClientes(miParam);
         

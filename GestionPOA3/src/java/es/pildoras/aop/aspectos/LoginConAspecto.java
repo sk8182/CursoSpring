@@ -7,6 +7,7 @@ package es.pildoras.aop.aspectos;
 import es.pildoras.aop.dao.Cliente;
 import java.util.List;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -24,6 +25,14 @@ import org.springframework.stereotype.Component;
 @Order(2)//Orden de ejecucion del aspecto!!!!!!!!!!!!
 public class LoginConAspecto {
     
+    
+    //metodo que realiza tareas tanto si lanza excepcion como si no @After
+    
+    @After("execution(* es.pildoras.aop.dao.ClienteDAO.encuentraClientes(..))")
+    public void ejecutandoTareasConYSinExcepcion(JoinPoint elPoint){
+        
+        System.out.println("Ejecutando tareas SIEMPREEEEEE!!!!!");
+    }
     
     //metodo que procesa datos depues de la excepcion
     
