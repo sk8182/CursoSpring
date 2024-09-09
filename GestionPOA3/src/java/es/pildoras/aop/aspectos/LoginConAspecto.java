@@ -30,7 +30,16 @@ public class LoginConAspecto {
     public void tareaTrasEncontrarClientes(List<Cliente> listaDeClientes){
         
         for(Cliente cl: listaDeClientes){
-            if(cl.getTipo()=="VIP") System.out.println("Existen clientes VIP en el listado. Nombre: "+cl.getNombre());
+            
+            
+            
+            if(cl.getTipo()=="VIP"){
+                
+                procesadoDatosAfterReturning(listaDeClientes);
+                
+                System.out.println("Existen clientes VIP en el listado. Nombre: "+cl.getNombre());
+            }
+            
         }
         
     }
@@ -38,7 +47,7 @@ public class LoginConAspecto {
 
     @Pointcut("execution(* es.pildoras.aop.dao.*.*(..))")//actua en cualkier metodo, se llame como se llame y tengan los param q tengan
     public void paraClientes() {
-
+ 
     }
        
 
@@ -63,7 +72,13 @@ public class LoginConAspecto {
 
     }
 
-    
+    private void procesadoDatosAfterReturning(List<Cliente> listaDeClientes) {
+        
+        for (Cliente cl: listaDeClientes){
+            String datosProcesados = "V.I.P " + cl.getNombre().toUpperCase();
+            cl.setNombre(datosProcesados);
+        }
+    }
 
-   
+  
 }
