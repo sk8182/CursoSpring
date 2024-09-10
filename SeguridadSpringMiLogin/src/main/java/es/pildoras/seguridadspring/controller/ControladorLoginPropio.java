@@ -17,7 +17,7 @@ public class ControladorLoginPropio {
     @GetMapping("/miFormularioLogin")
     public String muestraLoginPropio(){
         
-        return"login-propio";
+        return"login_nuevo";
         
         
     }
