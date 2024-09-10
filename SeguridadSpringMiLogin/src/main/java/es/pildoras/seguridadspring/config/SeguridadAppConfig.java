@@ -26,32 +26,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SeguridadAppConfig extends WebSecurityConfigurerAdapter {
     
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-//        manager.createUser(User.withDefaultPasswordEncoder()
-//                .username("Juan")
-//                .password("123")
-//                .roles("administrador")
-//                .build());
-//        manager.createUser(User.withDefaultPasswordEncoder()
-//                .username("Antonio")
-//                .password("456")
-//                .roles("usuario")
-//                .build());
-//        manager.createUser(User.withDefaultPasswordEncoder()
-//                .username("Ana")
-//                .password("789")
-//                .roles("ayudante")
-//                .build());
-//        manager.createUser(User.withDefaultPasswordEncoder()
-//                .username("Laura")
-//                .password("321")
-//                .roles("administrador")
-//                .build());
-//        
-//        return manager;
-//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)throws Exception{
@@ -73,7 +47,8 @@ public class SeguridadAppConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated().and().formLogin()
                 .loginPage("/miFormularioLogin")
                 .loginProcessingUrl("/autenticacionUsuario")
-                .permitAll();
+                .permitAll()
+                .and().logout().permitAll();
         
     }
    

@@ -300,10 +300,14 @@
             #icon {
                 width:60%;
             }
-            
+
             .formatoError{
-                
+
                 color:red;
+            }
+            .formatoLogout{
+
+                color:green;
             }
         </style>
 
@@ -320,6 +324,11 @@
                         <strong class="formatoError">Usuario o contraseña incorrectos</strong>
 
                     </c:if>
+                    <c:if test="${param.logout!=null}">
+
+                        <strong class="formatoLogout">El usuario ha cerrado la sesion</strong>
+
+                    </c:if>    
                 </div>
 
                 <!-- Login Form -->
