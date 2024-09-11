@@ -26,15 +26,28 @@
             
         </p>
         <br/>
-        
-        <!<!-- Link para admin -->
+        <security:authorize access="hasRole('administrador')">
+        <!-- Link para admin -->
         
         <p>
             
             <a href="${pageContext.request.contextPath}/administradores">ir a zona de administradores</a>
             
         </p>
+        <br/>
+        </security:authorize>
+        
+        <!-- Link para ayudantes -->
+        
+        <security:authorize access="hasRole('ayudante')">
+        <p>
+            
+            <a href="${pageContext.request.contextPath}/ayudantes">ir a zona de ayudantes</a>
+            
+        </p>
 
+        </security:authorize>
+        
         <form:form action="${pageContext.request.contextPath}/logout" method="POST">
             
             <input type="submit" value="Logout"/>

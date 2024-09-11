@@ -17,7 +17,7 @@ public class ElControlador {
         return "inicio";
     }
     
-    // agregar mapeo a administradores*********
+    // agregar mapeo a administradores
     
     @GetMapping("/administradores")
     public String muestraAdministradores(){
@@ -29,6 +29,14 @@ public class ElControlador {
     public String muestraAccesoDenegado(){
         
         return "acceso-denegado";
+    }
+    
+    // agregar mapeo a ayudantes*********
+    
+    @GetMapping("/ayudantes")
+    public String muestraAyudantes(){
+        
+        return "ayudantes";
     }
     
 }
