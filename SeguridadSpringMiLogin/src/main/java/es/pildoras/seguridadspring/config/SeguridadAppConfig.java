@@ -4,6 +4,8 @@
  */
 package es.pildoras.seguridadspring.config;
 
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.SecurityBuilder;
@@ -24,17 +26,25 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class SeguridadAppConfig extends WebSecurityConfigurerAdapter {
+    
+    @Autowired
+    private DataSource seguridadDataSource;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        UserBuilder usuarios = User.withDefaultPasswordEncoder();
+//        UserBuilder usuarios = User.withDefaultPasswordEncoder();
+//
+//        auth.inMemoryAuthentication()
+//                .withUser(usuarios.username("Juan").password("123").roles("usuario", "administrador"))
+//                .withUser(usuarios.username("Antonio").password("456").roles("usuario"))
+//                .withUser(usuarios.username("Ana").password("789").roles("usuario", "ayudante"))
+//                .withUser(usuarios.username("Laura").password("321").roles("usuario", "administrador"));
+        
+            
+        auth.jdbcAuthentication().dataSource(seguridadDataSource);
 
-        auth.inMemoryAuthentication()
-                .withUser(usuarios.username("Juan").password("123").roles("usuario", "administrador"))
-                .withUser(usuarios.username("Antonio").password("456").roles("usuario"))
-                .withUser(usuarios.username("Ana").password("789").roles("usuario", "ayudante"))
-                .withUser(usuarios.username("Laura").password("321").roles("usuario", "administrador"));
+
 
     }
 

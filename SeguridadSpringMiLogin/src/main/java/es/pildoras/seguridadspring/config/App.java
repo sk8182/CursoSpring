@@ -73,8 +73,10 @@ public class App {
         
         //Establecer las propiedades del pool de conexiones
         
-        seguridadDataSource.setInitialPoolSize(env.getProperty("connection.pool.initialPoolSize"));
-        
+        seguridadDataSource.setInitialPoolSize(getPropPool("connection.pool.initialPoolSize"));
+        seguridadDataSource.setMinPoolSize(getPropPool("connection.pool.minPoolSize"));
+        seguridadDataSource.setMaxPoolSize(getPropPool("connection.pool.maxPoolSize"));
+        seguridadDataSource.setMaxIdleTime(getPropPool("connection.pool.maxIdleTimePoolSize"));
         
         
         
@@ -84,5 +86,14 @@ public class App {
     }
     
     
+    private int getPropPool(String nombreProp){
+        
+        String propVal=env.getProperty(nombreProp);
+        
+        int propPool = Integer.parseInt(propVal);
+        
+        return propPool;
+        
+    }
     
 }
