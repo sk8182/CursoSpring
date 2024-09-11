@@ -20,80 +20,68 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages = "es.pildoras.seguridadspring")
 @PropertySource("classpath:persistencia-mysql.properties")//configurar ruta del nuevo archivo de propiedades
 public class App {
-    
+
     //variable que almacena las propiedades leidas del archivo de propiedades
     @Autowired
     private Environment env;
-    
+
     //-------------Sistema de Log para revisiones-----------
-    
     private Logger miLogger = Logger.getLogger(getClass().getName());
-    
+
     @Bean
-    public ViewResolver viewResolver(){       //Crea la instancia para resolver las vistas
-        
+    public ViewResolver viewResolver() {       //Crea la instancia para resolver las vistas
+
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        
+
         viewResolver.setPrefix("/WEB-INF/view/");//antes del nombre de la vista hay esta ruta
-        
+
         viewResolver.setSuffix(".jsp");  // este es el sufijo de las vistas
-        
+
         return viewResolver;
-        
+
     }
-    
+
     //definir un bean de seguridad
-    
     @Bean
-    public DataSource seguridadDataSource(){
-        
+    public DataSource seguridadDataSource() {
+
         //Crear pool de conexión
-        
         ComboPooledDataSource seguridadDataSource = new ComboPooledDataSource();
-        
+
         //Establecer Driver JDBC
         try {
-     
+
             seguridadDataSource.setDriverClass(env.getProperty("jdbc.driver"));
-            
+
         } catch (PropertyVetoException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //Hacer log de las propiedades de conexión
-        
-        miLogger.info("URL de la BBDD: "+ env.getProperty("jdbc.url"));
-        miLogger.info("Usuario conectado a BBDD: "+ env.getProperty("jdbc.user"));
-        
+        miLogger.info("URL de la BBDD: " + env.getProperty("jdbc.url"));
+        miLogger.info("Usuario conectado a BBDD: " + env.getProperty("jdbc.user"));
+
         //Establecer las propiedades de la conexión con la BBDD
-        
         seguridadDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
         seguridadDataSource.setUser(env.getProperty("jdbc.user"));
         seguridadDataSource.setPassword(env.getProperty("jdbc.password"));
-        
+
         //Establecer las propiedades del pool de conexiones
-        
         seguridadDataSource.setInitialPoolSize(getPropPool("connection.pool.initialPoolSize"));
         seguridadDataSource.setMinPoolSize(getPropPool("connection.pool.minPoolSize"));
         seguridadDataSource.setMaxPoolSize(getPropPool("connection.pool.maxPoolSize"));
-        seguridadDataSource.setMaxIdleTime(getPropPool("connection.pool.maxIdleTimePoolSize"));
-        
-        
-        
+        seguridadDataSource.setMaxIdleTime(getPropPool("connection.pool.maxIdleTime"));
+
         return seguridadDataSource;
-        
-        
+
     }
-    
-    
-    private int getPropPool(String nombreProp){
-        
-        String propVal=env.getProperty(nombreProp);
-        
-        int propPool = Integer.parseInt(propVal);
-        
-        return propPool;
-        
+
+    private int getPropPool(String nombreProp) {
+        String propVal = env.getProperty(nombreProp);
+        if (propVal == null) {
+            throw new IllegalArgumentException("La propiedad " + nombreProp + " no está definida o es nula.");
+        }
+        return Integer.parseInt(propVal);
     }
-    
+
 }

@@ -53,9 +53,9 @@ public class SeguridadAppConfig extends WebSecurityConfigurerAdapter {
 
         //http.authorizeRequests().anyRequest().authenticated().and().formLogin()
         http.authorizeRequests()
-                .antMatchers("/").hasRole("usuario")
-                .antMatchers("/administradores/**").hasRole("administrador")//en administradores y lo que venga detrás (**)
-                .antMatchers("/ayudantes/**").hasRole("ayudante")
+                .antMatchers("/").hasRole("USUARIO")
+                .antMatchers("/administradores/**").hasRole("ADMINISTRADOR")//en administradores y lo que venga detrás (**)
+                .antMatchers("/ayudantes/**").hasRole("AYUDANTE")
                 .and().formLogin()
                 .loginPage("/miFormularioLogin")
                 .loginProcessingUrl("/autenticacionUsuario")

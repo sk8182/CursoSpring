@@ -26,7 +26,7 @@
             
         </p>
         <br/>
-        <security:authorize access="hasRole('administrador')">
+        <security:authorize access="hasRole('ADMINISTRADOR')">
         <!-- Link para admin -->
         
         <p>
@@ -39,7 +39,7 @@
         
         <!-- Link para ayudantes -->
         
-        <security:authorize access="hasRole('ayudante')">
+        <security:authorize access="hasRole('AYUDANTE')">
         <p>
             
             <a href="${pageContext.request.contextPath}/ayudantes">ir a zona de ayudantes</a>
