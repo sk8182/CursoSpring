@@ -49,7 +49,8 @@ public class SeguridadAppConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/miFormularioLogin")
                 .loginProcessingUrl("/autenticacionUsuario")
                 .permitAll()
-                .and().logout().permitAll();
+                .and().logout().permitAll()
+                .and().exceptionHandling().accessDeniedPage("/acceso-denegado");
 
     }
 
