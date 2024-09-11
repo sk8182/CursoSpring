@@ -25,6 +25,15 @@
             Rol: <security:authentication property="principal.authorities"/>
             
         </p>
+        <br/>
+        
+        <!<!-- Link para admin -->
+        
+        <p>
+            
+            <a href="${pageContext.request.contextPath}/administradores">ir a zona de administradores</a>
+            
+        </p>
 
         <form:form action="${pageContext.request.contextPath}/logout" method="POST">
             

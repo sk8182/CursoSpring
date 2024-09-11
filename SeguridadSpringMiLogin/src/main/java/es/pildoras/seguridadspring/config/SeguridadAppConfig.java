@@ -21,37 +21,36 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  *
  * @author julio
  */
-
 @Configuration
 @EnableWebSecurity
 public class SeguridadAppConfig extends WebSecurityConfigurerAdapter {
-    
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)throws Exception{
-        
-        UserBuilder usuarios=User.withDefaultPasswordEncoder();
-        
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        UserBuilder usuarios = User.withDefaultPasswordEncoder();
+
         auth.inMemoryAuthentication()
-        .withUser(usuarios.username("Juan").password("123").roles("administrador"))
-        .withUser(usuarios.username("Antonio").password("456").roles("usuario"))
-        .withUser(usuarios.username("Ana").password("789").roles("ayudante"))
-        .withUser(usuarios.username("Laura").password("321").roles("administrador"));
-        
+                .withUser(usuarios.username("Juan").password("123").roles("usuario", "administrador"))
+                .withUser(usuarios.username("Antonio").password("456").roles("usuario"))
+                .withUser(usuarios.username("Ana").password("789").roles("usuario", "ayudante"))
+                .withUser(usuarios.username("Laura").password("321").roles("usuario", "administrador"));
+
     }
-    
-            
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
-        http.authorizeRequests().anyRequest().authenticated().and().formLogin()
+
+        //http.authorizeRequests().anyRequest().authenticated().and().formLogin()
+        http.authorizeRequests()
+                .antMatchers("/").hasRole("usuario")
+                .antMatchers("/administradores/**").hasRole("administrador")//en administradores y lo que venga detrás (**)
+                .and().formLogin()
                 .loginPage("/miFormularioLogin")
                 .loginProcessingUrl("/autenticacionUsuario")
                 .permitAll()
                 .and().logout().permitAll();
-        
+
     }
-   
-    
-    
+
 }
