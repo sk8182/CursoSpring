@@ -16,5 +16,8 @@
         <hr><!-- comment -->
         
         <a href="${pageContext.request.contextPath}/prueba/saludo">IR A SALUDO</a>
+        <br/>
+        <br/>
+        <a href="${pageContext.request.contextPath}/api/empleados">IR A EMPLEADOS</a>
     </body>
 </html>
