@@ -4,6 +4,7 @@
     "apellido": "Diaz",
     "activo":true,
     "idiomas":["Español","Inglés","Francés"],
+    "edad":"37",
     
     "datos_registro":{
         

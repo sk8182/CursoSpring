@@ -4,10 +4,13 @@
  */
 package pildoras.es.jackson.pruebas;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author julio
  */
+@JsonIgnoreProperties(ignoreUnknown=true)//Con esto no hace falta tener la propiedad con la que no voy a trabajar
 public class Empleado {
     
     private int id;
