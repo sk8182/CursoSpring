@@ -8,6 +8,9 @@ import es.pildoras.proyectorest.entidad.Empleado;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,8 +48,31 @@ public class EmpleadoRestController {
     @GetMapping("/empleados/{empleadoId}")
     public Empleado getEmpleado(@PathVariable int empleadoId) {
         
+        //comprueba si existe el empleado con su ID
+        
+        if((empleadoId >= losEmpleados.size()) || empleadoId<0){
+            
+            throw new EmpleadoNoEncontradoExcepcion("El id "+ empleadoId+ " no existe. El empleado no se encontró");
+        }
+        
+        
         return losEmpleados.get(empleadoId);
 
+    }
+    
+    @ExceptionHandler
+    public ResponseEntity<EmpleadoRespuestaError> manejoExcepcion(EmpleadoNoEncontradoExcepcion ex){
+        
+        EmpleadoRespuestaError error = new EmpleadoRespuestaError();
+        
+        error.setEstado(HttpStatus.NOT_FOUND.value());
+        
+        error.setMensaje(ex.getMessage());
+        
+        error.setTimeStamp(System.currentTimeMillis());
+        
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        
     }
 
 }
