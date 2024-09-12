@@ -46,33 +46,41 @@ public class EmpleadoRestController {
     }
 
     @GetMapping("/empleados/{empleadoId}")
-    public Empleado getEmpleado(@PathVariable int empleadoId) {
-        
-        //comprueba si existe el empleado con su ID
-        
-        if((empleadoId >= losEmpleados.size()) || empleadoId<0){
+    public Empleado getEmpleado(@PathVariable String empleadoId) {
+
+        int id;
+
+        try {
+            id = Integer.parseInt(empleadoId);
             
-            throw new EmpleadoNoEncontradoExcepcion("El id "+ empleadoId+ " no existe. El empleado no se encontró");
+        }catch(NumberFormatException ex){
+             
+            throw new EmpleadoNoEncontradoExcepcion("El id no es válido, ha de ser un número.");
         }
-        
-        
-        return losEmpleados.get(empleadoId);
+
+        //comprueba si existe el empleado con su ID
+        if ((id >= losEmpleados.size()) || id < 0) {
+
+            throw new EmpleadoNoEncontradoExcepcion("El id " + id + " no existe. El empleado no se encontró");
+        }
+
+        return losEmpleados.get(id);
 
     }
-    
+
     @ExceptionHandler
-    public ResponseEntity<EmpleadoRespuestaError> manejoExcepcion(EmpleadoNoEncontradoExcepcion ex){
-        
+    public ResponseEntity<EmpleadoRespuestaError> manejoExcepcion(EmpleadoNoEncontradoExcepcion ex) {
+
         EmpleadoRespuestaError error = new EmpleadoRespuestaError();
-        
+
         error.setEstado(HttpStatus.NOT_FOUND.value());
-        
+
         error.setMensaje(ex.getMessage());
-        
+
         error.setTimeStamp(System.currentTimeMillis());
-        
+
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-        
+
     }
 
 }
