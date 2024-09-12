@@ -28,6 +28,19 @@ public class DriverJackson {
             // Ver información en consola
             System.out.println("Nombre del empleado: " + empleado.getNombre());
             System.out.println("Apellido del empleado: " + empleado.getApellido());
+            System.out.println("Usuario Activo: " + empleado.isActivo());
+            
+            for(String idioma: empleado.getIdiomas()){
+                
+                System.out.println("Idioma que domina el usuario: "+ idioma);//para ver el contenido del array hay que recorrerlo antes (obvio)
+                
+            }
+            
+            Datos_Empleado datosEmpleado = empleado.getDatos_registro();
+            
+            System.out.println("Domicilio del empleado: " + datosEmpleado.getDomicilio());
+                
+            
 
         } catch (Exception e) {
             e.printStackTrace();

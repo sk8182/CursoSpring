@@ -14,6 +14,8 @@ public class Empleado {
     private String nombre;
     private String apellido;
     private boolean activo;
+    private String[] idiomas;
+    private Datos_Empleado datos_registro;
 
     public Empleado() {
     }
@@ -48,6 +50,22 @@ public class Empleado {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public String[] getIdiomas() {
+        return idiomas;
+    }
+
+    public void setIdiomas(String[] idiomas) {
+        this.idiomas = idiomas;
+    }
+
+    public Datos_Empleado getDatos_registro() {
+        return datos_registro;
+    }
+
+    public void setDatos_registro(Datos_Empleado datos_registro) {
+        this.datos_registro = datos_registro;
     }
     
     
